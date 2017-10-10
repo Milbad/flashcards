@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { View, Text, StyleSheet, FlatList, TouchableHighlight } from 'react-native'
+import { View, Text, StyleSheet } from 'react-native'
 import MyButton from './MyButton'
 import { connect } from 'react-redux'
 import { NavigationActions } from 'react-navigation'
@@ -61,17 +61,15 @@ class QuizView extends Component {
   }
 
   render () {
-    const questions = this.props.questions
+    const {questions, navigation} = this.props
+    const { mode, counter, score } = this.state
     const max= questions.length
-    let mode = this.state.mode
-    let counter = this.state.counter
-    let score = this.state.score
 
-    if(this.state.counter<max){
+    if(counter<max){
       return (
         <View style={styles.container}>
             <Text >{counter+1}/{max}</Text>
-            {this.state.mode === 'Answer'
+            {mode === 'Answer'
               ?<Text style={styles.title}>{questions[counter].question}</Text>
               :<Text style={styles.title}>{questions[counter].answer}</Text>
             }
@@ -85,7 +83,7 @@ class QuizView extends Component {
       return (
         <View style={styles.containerTitle}>
             <Text style={styles.title}>You have {getPercent(score,max)}% of good answers.</Text>
-            <MyButton onPress={() => this.props.navigation.dispatch(NavigationActions.back())}>
+            <MyButton onPress={() => navigation.dispatch(NavigationActions.back())}>
               Back to Deck
             </MyButton>
             <MyButton onPress={this.reinitState}>

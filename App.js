@@ -1,12 +1,12 @@
 import React from 'react'
-import { StyleSheet, Text, View, Platform} from 'react-native'
+import { Text, View} from 'react-native'
 import Decks from './components/Decks'
 import DeckDetail from './components/DeckDetail'
 import NewDeck from './components/NewDeck'
 import NewQuestion from './components/NewQuestion'
 import QuizView from './components/QuizView'
 import StatusBarBlack from './components/StatusBarBlack'
-import { TabNavigator, StackNavigator } from 'react-navigation'
+import { StackNavigator } from 'react-navigation'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import reducer from './reducers'
@@ -79,12 +79,3 @@ export default class App extends React.Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

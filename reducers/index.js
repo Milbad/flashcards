@@ -56,13 +56,3 @@ function decksReducer  (state = {}, action)  {
 }
 
 export default decksReducer
-/*return Object.assign({}, state, {
-    decks: state.map((deck) => {
-  if (deck.title === title) {
-    return Object.assign({}, deck, {
-      questions: deck.questions.concat(questions)
-    })
-  }
-  return deck
-})
-})*/

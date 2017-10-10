@@ -1,16 +1,13 @@
 import React, {Component} from 'react'
-import { View, Text, StyleSheet, FlatList, TouchableHighlight } from 'react-native'
+import { View, Text, StyleSheet } from 'react-native'
 import MyButton from './MyButton'
 import { connect } from 'react-redux'
-import { NavigationActions } from 'react-navigation'
-
-
 
 class DeckDetail extends Component {
 
-
   render () {
-    const deck = this.props.deck
+    const { deck, navigation } = this.props
+
     return (
       <View style={styles.container}>
         {deck.questions !== undefined && (
@@ -21,10 +18,10 @@ class DeckDetail extends Component {
             :<Text style={styles.cardsNum}>{deck.questions.length} cards</Text>
           }
           <View style={styles.containerbtn}>
-            <MyButton stylebtn={{backgroundColor:'white'}} style={{color:'black'}} onPress={() => this.props.navigation.navigate(
+            <MyButton stylebtn={{backgroundColor:'white'}} style={{color:'black'}} onPress={() => navigation.navigate(
                     'NewQuestion',{ title: deck.title})}>Add Card</MyButton>
             {deck.questions.length>0 &&(
-            <MyButton  onPress={() => this.props.navigation.navigate(
+            <MyButton  onPress={() => navigation.navigate(
                     'QuizView',{ deck: deck})}>Start Quiz</MyButton>
             )}
           </View>
@@ -54,19 +51,6 @@ const styles = StyleSheet.create({
     fontSize:25,
     fontWeight:'bold',
     textAlign:'center',
-  },
-  submitBtnText: {
-    color: 'black',
-    fontSize: 22,
-    textAlign: 'center',
-  },
-  btn:{
-    backgroundColor: 'lightgrey',
-    padding: 10,
-    borderRadius: 7,
-    height: 45,
-    margin:20,
-    width:200,
   },
   cardsNum: {
     padding: 5,

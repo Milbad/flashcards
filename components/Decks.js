@@ -1,13 +1,11 @@
 import React, {Component} from 'react'
-import { View, Text, StyleSheet,ScrollView, FlatList, TouchableHighlight, TouchableOpacity } from 'react-native'
-import { getDecks, removeEntry } from '../utils/helpers'
-import { receiveEntries, requestData } from '../actions'
+import { View, Text, StyleSheet,ScrollView, TouchableOpacity } from 'react-native'
+import { getDecks } from '../utils/helpers'
+import { receiveEntries } from '../actions'
 import { connect } from 'react-redux'
 import MyButton from './MyButton'
 import { setinitialDate } from '../utils/helpers'
 import { AppLoading} from 'expo'
-
-
 
 function Deck ({ deck, navigation }) {
 
@@ -16,7 +14,6 @@ function Deck ({ deck, navigation }) {
         <TouchableOpacity  style={styles.btn} onPress={() => navigation.navigate(
                 'DeckDetail',{ title: deck.title})}>
           <Text style={styles.title}>{deck.title}</Text>
-
           {deck.questions.length <= 1
             ? <Text style={styles.cardsNum}>{deck.questions.length} card</Text>
             : <Text style={styles.cardsNum}>{deck.questions.length} cards</Text>
@@ -39,17 +36,13 @@ class Decks extends Component {
       ready: false,
     }
 
-    componentDidMount () {
+  componentDidMount () {
       const { dispatch } = this.props
 
       getDecks()
         .then((entries) => dispatch(receiveEntries(entries)))
         .then(() => this.setState(() => ({ready: true})))
     }
-
-  //renderItem = ({item}) => {
-  //  return <Deck {...item} />
-//  }
 
   render () {
     const {decks, currentDeck, navigation } = this.props
@@ -67,52 +60,12 @@ class Decks extends Component {
         ))}
       </ScrollView>
         <View style={{alignItems:'center'}}>
-          <MyButton style={{}} onPress={() => navigation.navigate(
-                  'NewDeck')}>
+          <MyButton  onPress={() => navigation.navigate('NewDeck')}>
             Add Deck
           </MyButton>
         </View>
       </View>
     )
-
-    //test 7oct
-    /*console.log(entries)
-    let navigation= this.props.navigation.navigate
-    const decks2 = valuesToArray(entries)
-    return (
-      <View style={styles.container}>
-        {decks2.map(deck => (
-        //{Object.keys(decks).map((deck) => {
-        //  const { title, questions } = getDecks(deck)
-          //return (
-              <Deck key={deck.title} deck={deck} navigation={navigation}/>
-        //  )
-        //})}
-      ))}
-        <View style={{alignItems:'center'}}>
-        <MyButton style={{}} onPress={() => navigation(
-                'NewDeck')}>
-          Add Deck
-      </MyButton>
-      </View>
-
-      </View>
-    )
-  }
-  */
-  //fintest
-  /*  <FlatList
-      data={decks2}
-      renderItem={this.renderItem}
-    />*/
-  /*  {Object.keys(decks).map((deck) => {
-    const { title, questions } = getDecks(deck)
-    return (
-        <Deck key={title} title={title} questions={questions} />
-    )
-
-  })}*/
-
 }
 }
 
@@ -157,6 +110,5 @@ const mapStateToProps = (entries) => {
       decks: entries
     }
 }
-
 
 export default connect(mapStateToProps)(Decks);

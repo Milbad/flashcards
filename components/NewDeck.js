@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { View, Text, StyleSheet, TextInput, TouchableHighlight } from 'react-native'
+import { View, StyleSheet, TextInput } from 'react-native'
 import { addDeck } from '../actions/index'
 import { connect } from 'react-redux'
 import { saveDeckTitle } from '../utils/helpers'
@@ -9,9 +9,8 @@ import { NavigationActions } from 'react-navigation'
 class NewDeck extends Component {
   constructor(props) {
     super(props);
-    this.state = {input: ''};
+    this.state = {input: ''}
   }
-
 
   submit = () => {
     const navigateAction = NavigationActions.navigate({
@@ -20,7 +19,6 @@ class NewDeck extends Component {
   })
     this.props.addDeck(this.state.input)
     this.props.navigation.dispatch(navigateAction)
-  //  this.props.navigation.navigate('DeckDetail', {title:this.state.input})
     saveDeckTitle(this.state.input)
   }
 
@@ -56,16 +54,6 @@ const styles = StyleSheet.create({
     padding: 10,
     margin: 10,
     borderRadius: 7,
-  },
-  containerbtn: {
-    flex: 1,
-    backgroundColor: 'white',
-    alignItems: 'center',
-    width:200,
-  },
-  title: {
-    fontSize:20,
-    fontWeight:'bold',
   },
   btninactive:{
     backgroundColor:'lightgrey',
