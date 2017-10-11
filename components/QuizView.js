@@ -11,9 +11,7 @@ function pressCorrect(counter, score) {
     return {counter, score}
 }
 
-function getPercent(score, max){
-  return Math.trunc(score/max*100)
-}
+const getPercent = (score, max) => Math.trunc(score/max * 100)
 
 class QuizView extends Component {
 
@@ -38,26 +36,26 @@ class QuizView extends Component {
   }
 
   pressCorrect = () => {
-    this.setState({
-      score: this.state.score + 1,
+    this.setState( state => {
+      score: state.score + 1,
       mode:'Answer',
-      counter: this.state.counter + 1
+      counter: state.counter + 1
     })
 
   }
 
   pressIncorrect = () => {
-    this.setState({
-      counter: this.state.counter + 1,
+    this.setState( state => {
+      counter: state.counter + 1,
       mode:'Answer',
      })
   }
 
   updateMode = () => {
-    {this.state.mode === 'Answer'
+    this.state.mode === 'Answer'
       ? this.setState({ mode: 'Question' })
       : this.setState({mode:'Answer'})
-    }
+
   }
 
   render () {
