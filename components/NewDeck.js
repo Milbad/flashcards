@@ -14,8 +14,8 @@ class NewDeck extends Component {
 
   submit = () => {
     const navigateAction = NavigationActions.navigate({
-      routeName: 'DeckDetail',
-      params: {title:this.state.input},
+    routeName: 'DeckDetail',
+    params: {title:this.state.input},
   })
     this.props.addDeck(this.state.input)
     this.props.navigation.dispatch(navigateAction)

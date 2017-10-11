@@ -36,17 +36,17 @@ class QuizView extends Component {
   }
 
   pressCorrect = () => {
-    this.setState( state => {
-      score: state.score + 1,
+    this.setState({
+      score: this.state.score + 1,
       mode:'Answer',
-      counter: state.counter + 1
+      counter: this.state.counter + 1
     })
 
   }
 
   pressIncorrect = () => {
-    this.setState( state => {
-      counter: state.counter + 1,
+    this.setState({
+      counter: this.state.counter + 1,
       mode:'Answer',
      })
   }
@@ -81,7 +81,7 @@ class QuizView extends Component {
       return (
         <View style={styles.containerTitle}>
             <Text style={styles.title}>You have {getPercent(score,max)}% of good answers.</Text>
-            <MyButton onPress={() => navigation.goBack())}>
+            <MyButton onPress={() => navigation.goBack()}>
               Back to Deck
             </MyButton>
             <MyButton onPress={this.reinitState}>
