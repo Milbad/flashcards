@@ -29,29 +29,31 @@ function decksReducer  (state = {}, action)  {
   const {entries, decks, title, questions, entry} = action
   const deck = state[title]
   switch (action.type) {
-    case RECEIVE_ENTRIES :
-      return entries
-    case ADD_DECK :
-      return Object.assign({}, state, {
-          ...state,
-          [entry]:
-          {
+    case RECEIVE_ENTRIES : {
+        return entries
+      }
+    case ADD_DECK : {
+        return Object.assign({}, state, {
+            ...state,
+            [entry]:
+            {
             title: entry,
             questions: []
-          }
-
-      })
-      case ADD_QA :
-      return {
-        ...state,
-        [title] : {
+            }
+        })
+      }
+      case ADD_QA : {
+        return {
+          ...state,
+          [title] : {
           ...deck,
           questions: deck.questions.concat(questions)
+          }
         }
       }
-
-    default :
+    default : {
       return state
+    }    
   }
 }
 
