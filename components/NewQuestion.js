@@ -3,7 +3,6 @@ import { View, StyleSheet, TextInput } from 'react-native'
 import { addQA } from '../actions/index'
 import { connect } from 'react-redux'
 import MyButton from './MyButton'
-import { NavigationActions } from 'react-navigation'
 import { addCardToDeck } from '../utils/helpers'
 
 class NewQuestion extends Component {
@@ -21,7 +20,7 @@ class NewQuestion extends Component {
 
     }
     this.props.addQA(title,questions)
-    this.props.navigation.dispatch(NavigationActions.back())
+    this.props.navigation.goBack()
     addCardToDeck(title, questions)
   }
 

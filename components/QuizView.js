@@ -81,7 +81,7 @@ class QuizView extends Component {
       return (
         <View style={styles.containerTitle}>
             <Text style={styles.title}>You have {getPercent(score,max)}% of good answers.</Text>
-            <MyButton onPress={() => navigation.dispatch(NavigationActions.back())}>
+            <MyButton onPress={() => navigation.goBack())}>
               Back to Deck
             </MyButton>
             <MyButton onPress={this.reinitState}>
