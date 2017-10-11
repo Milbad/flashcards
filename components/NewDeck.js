@@ -7,9 +7,9 @@ import MyButton from './MyButton'
 import { NavigationActions } from 'react-navigation'
 
 class NewDeck extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {input: ''}
+
+  state = {
+      input: '',
   }
 
   submit = () => {

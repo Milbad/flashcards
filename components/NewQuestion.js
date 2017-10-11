@@ -8,12 +8,9 @@ import { addCardToDeck } from '../utils/helpers'
 
 class NewQuestion extends Component {
 
-  constructor(props) {
-    super(props)
-    this.state = {
-      question: '',
-      answer:'',
-    }
+  state = {
+    question: '',
+    answer:'',
   }
 
   submit = () => {
