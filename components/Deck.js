@@ -2,18 +2,14 @@ import React, {Component} from 'react'
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 
 export default function Deck ({ deck, navigation }) {
-
+  const cardText = deck.questions.length <= 1 ? 'card' : 'cards'
   return (
       <View style={styles.deck}>
         <TouchableOpacity  style={styles.btn} onPress={() => navigation.navigate(
                 'DeckDetail',{ title: deck.title})}>
           <Text style={styles.title}>{deck.title}</Text>
-          {deck.questions.length <= 1
-            ? <Text style={styles.cardsNum}>{deck.questions.length} card</Text>
-            : <Text style={styles.cardsNum}>{deck.questions.length} cards</Text>
-          }
+          <Text style={styles.cardsNum}>{deck.questions.length} {cardText}</Text>
         </TouchableOpacity>
-
       </View>
   )
 }
