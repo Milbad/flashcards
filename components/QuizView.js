@@ -5,12 +5,6 @@ import { connect } from 'react-redux'
 import { NavigationActions } from 'react-navigation'
 import { setLocalNotification, clearLocalNotification } from '../utils/notifications'
 
-function pressCorrect(counter, score) {
-     counter+=1;
-     score+=1;
-    return {counter, score}
-}
-
 const getPercent = (score, max) => Math.trunc(score/max * 100)
 
 class QuizView extends Component {
