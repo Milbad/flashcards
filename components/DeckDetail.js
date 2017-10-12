@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import MyButton from './MyButton'
 import { connect } from 'react-redux'
+import Deck from './Deck'
 
 class DeckDetail extends Component {
 
@@ -13,8 +14,7 @@ class DeckDetail extends Component {
       <View style={styles.container}>
         {deck.questions !== undefined && (
         <View>
-          <Text style={styles.title}>{deck.title}</Text>
-          <Text style={styles.cardsNum}>{deck.questions.length} {cardText}</Text>
+          <Deck key={deck} deck={deck} navigation={navigation}/>
           <View style={styles.containerbtn}>
             <MyButton
               stylebtn={{backgroundColor:'white'}}
@@ -43,23 +43,8 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   containerbtn: {
-    flex: 1,
-    backgroundColor: 'white',
     alignItems: 'center',
-    width:200,
   },
-  title: {
-    padding:5,
-    fontSize:25,
-    fontWeight:'bold',
-    textAlign:'center',
-  },
-  cardsNum: {
-    padding: 5,
-    fontSize:18,
-    color: 'grey',
-    textAlign:'center',
-  }
 })
 
 // Map state to props

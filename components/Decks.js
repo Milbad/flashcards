@@ -40,10 +40,12 @@ class Decks extends Component {
       <View style={styles.container}>
         <ScrollView>
           {decks2.map(deck => (
-          <Deck key={deck.title} deck={deck} navigation={navigation}/>
+          <View key={deck.title} style={styles.deck}>
+            <Deck deck={deck} navigation={navigation}/>
+          </View>
         ))}
       </ScrollView>
-        <View style={{alignItems:'center'}}>
+        <View style={styles.containerbtn}>
           <MyButton  onPress={() => navigation.navigate('NewDeck')}>
             Add Deck
           </MyButton>
@@ -58,6 +60,16 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'white',
     alignItems: 'stretch',
+  },
+  deck: {
+    padding:10,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderBottomWidth: 2,
+    borderBottomColor:'black',
+  },
+  containerbtn: {
+    alignItems: 'center',
   },
 })
 
